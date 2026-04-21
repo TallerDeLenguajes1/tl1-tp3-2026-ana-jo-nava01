@@ -8,8 +8,10 @@ void BuscarNombrePorId(int n, char *V[]);
 int BuscarNombrePorPalabra(char *V[], char str[]);
 
 int main() {
-    char *V[MAX];
+    char **V;
     char buff[50];
+
+    V = (char **)malloc(sizeof(char *) * MAX);
 
     for(int i = 0; i < MAX; i++) {
         printf("Ingrese el nombre de la persona %d: ", i);
@@ -52,7 +54,10 @@ int main() {
         }
     }
 
-    
+    for(int i = 0; i < MAX; i++) {
+        free(V[i]);
+    }
+    free(V);
 
     return 0;
 }
