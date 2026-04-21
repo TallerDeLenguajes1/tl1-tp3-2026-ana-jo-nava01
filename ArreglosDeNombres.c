@@ -21,22 +21,38 @@ int main() {
     }
     
     MostrarPersonas(V);
-    int n;
-    printf("Ingrese el indice que desea buscar: ");
-    scanf("%d", &n);
-    BuscarNombrePorId(n, V);
 
-    int indice;
-    printf("Ingrese la palabra clave: ");
-    fflush(stdin);
-    gets(buff);
-    indice = BuscarNombrePorPalabra(V, buff);
+    int opcion;
+    do {
+        printf("==Opciones de busqueda==\n");
+        printf("1. Buscar por Id\n");
+        printf("2. Buscar por palabra\n");
+        scanf("%d", &opcion);
+        if(opcion != 1 && opcion != 2) {
+            printf("Ingrese una opcion valida. \n");
+        }
+    }while(opcion != 1 && opcion != 2);
 
-    if(indice != -1) {
-        printf("El nombre con esa palabra fue encontrado en %d", indice);
+    if(opcion == 1) {
+        int n;
+        printf("Ingrese el indice que desea buscar: ");
+        scanf("%d", &n);
+        BuscarNombrePorId(n, V);
     } else {
-        printf("No hubo coincidencias.\n");
+        int indice;
+        printf("Ingrese la palabra clave: ");
+        fflush(stdin);
+        gets(buff);
+        indice = BuscarNombrePorPalabra(V, buff);
+
+        if(indice != -1) {
+            puts(V[indice]);
+        } else {
+            printf("No hubo coincidencias.\n");
+        }
     }
+
+    
 
     return 0;
 }
