@@ -80,9 +80,12 @@ int main() {
         printf("==TOTAL: $ %.2f==\n", costo_por_cliente);
     }
 
-    
-
     //Libero memoria
+    for(int i = 0; i < cantClientes; i++) {
+        free(clientes[i].NombreCliente);
+        free(clientes[i].Productos);
+    }
+    free(clientes);
 
     return 0;
 }
