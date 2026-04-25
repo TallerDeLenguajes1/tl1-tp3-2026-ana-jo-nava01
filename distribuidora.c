@@ -55,8 +55,10 @@ int main() {
         clientes[i].Productos = (Producto *)malloc(clientes[i].CantidadProductosAPedir * sizeof(Producto));
         
         //Cargo arreglo de productos con valores aleatorios
+        float costo_por_cliente = 0;
         for(int j = 0; j < clientes[i].CantidadProductosAPedir; j++) {
             clientes[i].Productos[j].ProductoID = j;
+            printf("->Producto %d\n", j);
 
             int cant_rand = (rand() % 10) + 1;
             clientes[i].Productos[j].Cantidad = cant_rand;
@@ -70,8 +72,12 @@ int main() {
             clientes[i].Productos[j].PrecioUnitario = precio_rand;
             printf("Precio unitario: $ %.2f\n", clientes[i].Productos[j].PrecioUnitario);
 
-            printf("Costo total: $ %.2f\n", costoTotal(clientes[i].Productos[j]));
+            float total = costoTotal(clientes[i].Productos[j]);
+            printf("Costo total: $ %.2f\n", total);
+            costo_por_cliente += total;
         }
+
+        printf("==TOTAL: $ %.2f==\n", costo_por_cliente);
     }
 
     
