@@ -18,7 +18,6 @@ typedef struct {
     Producto *Productos; //El tamaño de este arreglo depende de la variable “CantidadProductosAPedir”
 }Cliente;
 
-
 int main() {
     srand(time(NULL));
 
@@ -71,7 +70,13 @@ int main() {
         }
     }
 
+
+
     //Libero memoria
 
     return 0;
+}
+
+float costoTotal(Producto prod) {
+    return prod.Cantidad * prod.PrecioUnitario;
 }
