@@ -18,6 +18,8 @@ typedef struct {
     Producto *Productos; //El tamaño de este arreglo depende de la variable “CantidadProductosAPedir”
 }Cliente;
 
+float costoTotal(Producto prod);
+
 int main() {
     srand(time(NULL));
 
@@ -66,11 +68,13 @@ int main() {
 
             int precio_rand = (rand() % 100) + 10;
             clientes[i].Productos[j].PrecioUnitario = precio_rand;
-            printf("Precio unitario: %.2f\n", clientes[i].Productos[j].PrecioUnitario);
+            printf("Precio unitario: $ %.2f\n", clientes[i].Productos[j].PrecioUnitario);
+
+            printf("Costo total: $ %.2f\n", costoTotal(clientes[i].Productos[j]));
         }
     }
 
-
+    
 
     //Libero memoria
 
